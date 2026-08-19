@@ -22,6 +22,32 @@ The key business question is:
 
 ---
 
+## 🖼️ Project Preview
+
+### Business Question
+
+![Cyclistic Business Question](tableau/screenshots/01_business_question.png)
+
+### Executive Summary
+
+![Cyclistic Executive Summary](tableau/screenshots/02_executive_summary.png)
+
+### Monthly Ride Trends
+
+![Monthly Ride Trends](tableau/screenshots/03_monthly_rides.png)
+
+### Peak Riding Hours
+
+![Peak Riding Hours](tableau/screenshots/07_peak_hours.png)
+
+### Recommendations
+
+![Cyclistic Recommendations](tableau/screenshots/13_recommendations.png)
+
+[View all 13 Tableau Story screenshots](tableau/screenshots/)
+
+---
+
 ## 🗂️ Dataset
 
 The analysis uses Cyclistic bike-share trip data covering **January–December 2025**.

@@ -6,6 +6,10 @@ This project analyzes 2025 Cyclistic bike-share data to understand how **casual 
 
 The analysis focuses on identifying behavioral patterns and opportunities that can help Cyclistic convert more casual riders into annual members.
 
+## 📊 Tableau Public
+
+[View the interactive Tableau Story — Cyclistic Bike-Share Analysis 2025](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link)
+
 ---
 
 ## 🎯 Business Task

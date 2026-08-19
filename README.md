@@ -1,18 +1,18 @@
 # Cyclistic Bike-Share Analysis — 2025
 
-## 📌 Project Overview
+## Project Overview
 
 This project analyzes 2025 Cyclistic bike-share data to understand how **casual riders and annual members use the service differently**.
 
 The analysis focuses on identifying behavioral patterns and opportunities that can help Cyclistic convert more casual riders into annual members.
 
-## 📊 Tableau Public
+## Tableau Public
 
 [View the interactive Tableau Story — Cyclistic Bike-Share Analysis 2025](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link)
 
 ---
 
-## 🎯 Business Task
+## Business Task
 
 Cyclistic wants to increase the number of annual memberships.
 
@@ -22,7 +22,7 @@ The key business question is:
 
 ---
 
-## 🖼️ Project Preview
+## Project Preview
 
 ### Business Question
 
@@ -48,7 +48,7 @@ The key business question is:
 
 ---
 
-## 🗂️ Dataset
+## Dataset
 
 The analysis uses Cyclistic bike-share trip data covering **January–December 2025**.
 
@@ -65,7 +65,7 @@ After data cleaning, the analysis contains approximately **5.55 million rides**.
 
 ---
 
-## 🛠️ Tools Used
+## Tools Used
 
 - **SQL / SQLite** — Data cleaning and analysis
 - **Tableau** — Data visualization and storytelling
@@ -74,7 +74,7 @@ After data cleaning, the analysis contains approximately **5.55 million rides**.
 
 ---
 
-## 🧹 Data Preparation
+## Data Preparation
 
 The data was cleaned and prepared before analysis.
 
@@ -93,7 +93,7 @@ Key steps included:
 
 ---
 
-## 📊 Analysis
+## Analysis
 
 The analysis examined differences between casual riders and annual members across several dimensions:
 
@@ -131,7 +131,7 @@ Casual riders generally have longer average ride durations than annual members a
 
 ---
 
-## 🔍 Key Findings
+## Key Findings
 
 1. **Casual riders are more active on weekends**, while members have stronger weekday usage.
 
@@ -147,7 +147,7 @@ Casual riders generally have longer average ride durations than annual members a
 
 ---
 
-## 💡 Recommendations
+## Recommendations
 
 ### 1. Target Casual Riders on Weekends
 
@@ -171,7 +171,7 @@ Highlight the **convenience and flexibility of electric bikes** in membership ca
 
 ---
 
-## 📈 Tableau Analysis
+## Tableau Analysis
 
 The project includes a Tableau story covering:
 
@@ -190,7 +190,7 @@ The project includes a Tableau story covering:
 
 ---
 
-## 📌 Final Business Recommendation
+## Final Business Recommendation
 
 Cyclistic should focus on converting **frequent casual riders into annual members** by reaching them at the right **time, place, and riding occasion**.
 
@@ -202,7 +202,7 @@ These insights can be used to create targeted digital and location-based members
 
 ---
 
-## 🧠 Skills Demonstrated
+## Skills Demonstrated
 
 - Data cleaning
 - SQL

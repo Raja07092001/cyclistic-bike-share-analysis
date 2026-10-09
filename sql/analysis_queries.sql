@@ -8,9 +8,9 @@
    1. DATA CLEANING
    ============================================================ */
 
--- Monthly cleaning logic used during preparation:
--- Keep records with required fields and positive ride duration.
--- The same logic was applied while preparing the monthly datasets.
+-- Post-clean validation/filter example against an ALREADY CLEANED table.
+-- It does not create tripdata_2025_clean from the monthly raw files.
+-- Dropping records with missing stations can bias subsequent comparisons.
 
 SELECT *
 FROM tripdata_2025_clean
@@ -202,18 +202,31 @@ LIMIT 10;
 
 
 /* ============================================================
-   15. TOP 10 START STATIONS BY RIDER TYPE
+   15. TOP 10 START STATIONS WITHIN EACH RIDER TYPE
    ============================================================ */
 
-SELECT
-    start_station_name,
-    member_casual AS rider_type,
-    COUNT(*) AS ride_count
-FROM tripdata_2025_clean
-WHERE start_station_name IS NOT NULL
-GROUP BY start_station_name, member_casual
-ORDER BY ride_count DESC
-LIMIT 10;
+-- Rank stations separately for casual and member riders.
+WITH station_counts AS (
+    SELECT
+        member_casual AS rider_type,
+        start_station_name,
+        COUNT(*) AS ride_count
+    FROM tripdata_2025_clean
+    WHERE start_station_name IS NOT NULL
+    GROUP BY member_casual, start_station_name
+),
+ranked AS (
+    SELECT rider_type, start_station_name, ride_count,
+           ROW_NUMBER() OVER (
+               PARTITION BY rider_type
+               ORDER BY ride_count DESC, start_station_name
+           ) AS station_rank
+    FROM station_counts
+)
+SELECT rider_type, start_station_name, ride_count, station_rank
+FROM ranked
+WHERE station_rank <= 10
+ORDER BY rider_type, station_rank;
 
 
 /* ============================================================
@@ -231,18 +244,31 @@ LIMIT 10;
 
 
 /* ============================================================
-   17. TOP 10 END STATIONS BY RIDER TYPE
+   17. TOP 10 END STATIONS WITHIN EACH RIDER TYPE
    ============================================================ */
 
-SELECT
-    end_station_name,
-    member_casual AS rider_type,
-    COUNT(*) AS ride_count
-FROM tripdata_2025_clean
-WHERE end_station_name IS NOT NULL
-GROUP BY end_station_name, member_casual
-ORDER BY ride_count DESC
-LIMIT 10;
+-- Rank stations separately for casual and member riders.
+WITH station_counts AS (
+    SELECT
+        member_casual AS rider_type,
+        end_station_name,
+        COUNT(*) AS ride_count
+    FROM tripdata_2025_clean
+    WHERE end_station_name IS NOT NULL
+    GROUP BY member_casual, end_station_name
+),
+ranked AS (
+    SELECT rider_type, end_station_name, ride_count,
+           ROW_NUMBER() OVER (
+               PARTITION BY rider_type
+               ORDER BY ride_count DESC, end_station_name
+           ) AS station_rank
+    FROM station_counts
+)
+SELECT rider_type, end_station_name, ride_count, station_rank
+FROM ranked
+WHERE station_rank <= 10
+ORDER BY rider_type, station_rank;
 
 
 /* ============================================================

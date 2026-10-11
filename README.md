@@ -1,90 +1,52 @@
-# Cyclistic Bike-Share Analysis | 2025
+# Cyclistic Bike-Share Analysis
 
-**SQL analysis · Tableau storytelling · Business recommendations**
+**Rider behavior and membership-growth opportunities | 2025**
 
-[**Explore the interactive Tableau Story**](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link) · [SQL analysis](sql/analysis_queries.sql) · [All 13 Tableau screenshots](tableau/screenshots/)
+**SQL (SQLite) · Tableau Public · Business Analytics**
 
-## Executive summary
+[**View Interactive Tableau Story**](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link) · [Explore SQL Queries](sql/analysis_queries.sql)
 
-This case study uses approximately **5.55 million cleaned 2025 bike-share trips**, as described in the original project, to compare **casual riders** and **annual members** and identify opportunities for membership marketing.
+## Business question
 
-**Business question:** How do the two rider groups use bike-share differently, and when or where should Cyclistic test membership promotion?
+**How do casual riders and annual members use Cyclistic differently, and how can these patterns inform membership marketing?**
 
-The analysis highlights differences in **day of week, time of day, trip duration, seasonal activity and station demand**. These patterns support testable marketing ideas, not claims of guaranteed membership conversion.
+This case study examines approximately **5.55 million cleaned bike-share trips** recorded during **January–December 2025**, comparing rider behavior by day, hour, month, trip duration, bike type and station.
 
-## Project at a glance
+## Dashboard preview
 
-| Scope | Details |
+[![Cyclistic Tableau Story — Executive Summary](tableau/screenshots/02_executive_summary.png)](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link)
+
+*Open the [interactive Tableau Story](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link) to explore the complete analysis.*
+
+## Key findings
+
+| Finding | Business relevance |
 |---|---|
-| Study period | January–December 2025 |
-| Analytical dataset | Approximately 5.55 million rides after cleaning (project-reported) |
-| Tools | SQL / SQLite, Tableau Public, Excel / Google Sheets |
-| Dimensions | Rider type, month, day, hour, station, bike type, trip duration |
-| Deliverables | Interactive Tableau Story, SQL query library, 13 screenshots |
+| **Casual riders** show stronger weekend activity; **members** use bikes more consistently on weekdays. | Tailor membership messages to different riding occasions. |
+| Casual usage rises during warmer months, and casual rides tend to last longer. | Test campaigns during higher-use periods, with leisure-oriented messaging. |
+| Members show greater activity around typical commuting hours. | Explore the value of membership for regular travel. |
+| Electric bikes are popular with both groups; some stations carry substantial traffic. | Test electric-bike benefits and targeted promotions at suitable locations. |
 
-## Tableau preview
+## Business recommendations
 
-[![Cyclistic Executive Summary](tableau/screenshots/02_executive_summary.png)](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link)
+1. **Pilot weekend and warmer-month promotions** where casual activity is relatively high. Measure membership sign-ups against a comparable control group.
+2. **Test location-based campaigns** at stations with meaningful casual-rider volumes. Compare conversion rates rather than relying on station traffic alone.
+3. **A/B test membership messaging** focused on commuting convenience and electric-bike flexibility; evaluate conversion and retention.
 
-[![Cyclistic Recommendations](tableau/screenshots/13_recommendations.png)](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link)
+*These recommendations are hypotheses drawn from observed riding patterns, not proven drivers of membership purchases.*
 
-**[Open the full interactive Tableau Story →](https://public.tableau.com/shared/CRS5Q8WRT?:display_count=n&:origin=viz_share_link)**
+## Approach and tools
 
-## Key analytical findings
+- **Preparation:** Combined monthly trip data; excluded records with missing required information or non-positive ride durations.
+- **SQL analysis:** Used SQLite aggregations, date/time functions, CTEs and window functions to compare rider segments, time patterns, ride length and station rankings.
+- **Visualization:** Built a Tableau Story to communicate rider behavior and practical business opportunities.
 
-| Observed pattern | Potential business implication |
-|---|---|
-| Casual riders show stronger **weekend** activity | Test weekend membership messages |
-| Members have stronger **weekday and commuting-hour** patterns | Position memberships around consistent daily travel |
-| Casual activity grows during **warmer months** | Schedule experiments during periods of high casual activity |
-| Casual rides are generally **longer** | Explore leisure-oriented messaging |
-| Electric bikes are popular across rider types | Test messaging about electric-bike convenience |
-| A subset of stations has particularly high ride volumes | Pilot station-level promotions while accounting for rider mix |
+**[Review the SQL analysis](sql/analysis_queries.sql)** · **[Browse all Tableau Story screenshots](tableau/screenshots/)**
 
-Trip patterns do not reveal individual motivations, prove that a given ride was a commute, or show who later bought a membership.
+## Data and reproducibility notes
 
-## Recommendations as measurable experiments
+The ride count is based on the project's documented cleaned dataset. The repository includes the SQL analysis and Tableau screenshots, **not** the raw monthly files or the prebuilt SQLite database. Queries expect an existing table named `tripdata_2025_clean`. The dataset does not include verified campaign conversion outcomes or rider motivations, so it cannot establish the causal effects of proposed marketing actions.
 
-1. **Weekend/seasonal marketing:** Pilot promotion during casual-use peaks, with a control group; evaluate attributable membership sign-ups.
-2. **Station-focused outreach:** Compare sign-up rates at high-casual-usage stations with similar untreated locations.
-3. **Membership positioning:** A/B test reliable commuting versus flexible electric-bike benefits; measure conversion and retention.
-4. **Understand repeat usage before targeting individuals:** Obtain appropriate consent-based customer or campaign data. The trip-level information described here is insufficient to reliably identify repeat casual riders.
+---
 
-These are proposed experiments, not proven drivers of membership growth.
-
-## Data preparation and SQL
-
-The documented preparation workflow combined 2025 monthly files, removed observations with missing required station, rider or bike-type information, discarded non-positive trip durations and created a cleaned SQLite table named `tripdata_2025_clean`.
-
-[**Browse SQL queries →**](sql/analysis_queries.sql)
-
-Queries cover trip counts, rider segmentation, hourly/weekly/monthly patterns, bike types, ride lengths, station rankings and rider-type percentage shares. The station-by-rider-type queries now use separate top-ten rankings within each rider group.
-
-**How to run:** Open an SQLite database that already contains `tripdata_2025_clean` in SQLite or DB Browser for SQLite, then execute the relevant queries from `sql/analysis_queries.sql`.
-
-**Reproducibility boundary:** The raw monthly files, database and full file-combination pipeline are **not included** in this repository. The supplied SQL script demonstrates analysis against an existing cleaned table, not a complete build of the dataset.
-
-## Limitations
-
-- Excluding missing-station records may affect comparisons of station activity or rider mix.
-- No documented rider-level identity, campaign exposure, conversion outcome or travel purpose means these analyses cannot establish actual membership-conversion effects.
-- The ~5.55 million ride count comes from the existing project documentation; the raw dataset is not committed here for independent verification.
-- The exact original dataset source and reuse terms should be linked before redistributing raw records.
-- One year of results should not be taken as proof of recurring seasonal patterns.
-
-## Repository layout
-
-```text
-cyclistic-bike-share-analysis/
-├── README.md
-├── sql/
-│   └── analysis_queries.sql
-└── tableau/
-    └── screenshots/
-        ├── 01_business_question.png
-        ├── 02_executive_summary.png
-        ├── ...
-        └── 13_recommendations.png
-```
-
-**Skills demonstrated:** SQL aggregation, SQLite date/time functions, CTEs, window functions, segment comparison, data-quality awareness, Tableau storytelling and business communication.
+**Skills demonstrated:** SQL · SQLite · Data cleaning · Exploratory analysis · Tableau · Data storytelling · Business recommendations
